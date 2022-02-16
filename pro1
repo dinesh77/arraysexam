@@ -1,0 +1,41 @@
+/*
+Req:
+String[] s = {"Papaya", "Step", "CARRACE", "Paass", "black"};
+from the above array take all the Strings that are possible for palindrome and store in new Array
+*/
+
+package com.javalaya.arrays.exam;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+class Array_Pro6{
+	
+	public static void palindromeCheck(String[] s){
+		ArrayList<String> al = new ArrayList<>();
+		for (String eachString:s){
+			List<Character> list = new ArrayList<Character>();
+			String str = eachString.toLowerCase();
+			for (int i = 0; i < str.length(); i++){
+				//if(list.contains(str.charAt(i))) 
+				if(list.contains(str.charAt(i)))
+					list.remove((Character)str.charAt(i));
+				else                               
+					list.add(str.charAt(i));
+			}
+			if ((str.length()%2==0 && list.isEmpty()) || (str.length()%2==1 && list.size()==1)){  
+				al.add(eachString);
+			}
+		}
+		String[] str = al.toArray (new String[0]);
+		System. out .println (Arrays.toString (str));
+	}
+}
+
+class Array_Pro6Test{
+	
+	public static void main(String[] abc){
+		Array_Pro6.palindromeCheck(new String[]{"Papaya", "Step", "CARRACE", "Paass", "black"});
+	}
+}
